@@ -303,7 +303,7 @@ class GitClone(InstallStep):
 
     @property
     def already_satisfied(self):
-        return os.path.exist(self.options.get("project_dir"))
+        return os.path.exists(self.options.get("project_dir"))
 
     def setup(self):
         sh.git("clone", PROJECT_GIT_REPO, self.options.get("project_dir"))
