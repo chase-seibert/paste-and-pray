@@ -393,7 +393,7 @@ class SetupDatabase(InstallStep):
 
     def setup(self):
         os.chdir(self.options.get("project_dir"))
-        self.run_virtualenv("python", "manage.py", "resetdb", **self.verbose_kwargs)
+        self.run_virtualenv("python", "manage.py", "syncdb", **self.verbose_kwargs)
 
 
 class RunServerAlias(InstallStep):
