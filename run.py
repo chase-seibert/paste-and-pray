@@ -208,10 +208,11 @@ class BrewDependenciesInstall(InstallStep):
     ''' Installing dependendies '''
 
     dependencies = [
-         "libxml2",
-         "libxslt",
-         "libmagic",
-         "postgresql",
+        "libxml2",
+        "libxslt",
+        "libmagic",
+        "postgresql",
+        "libevent",
     ]
 
     @property
@@ -257,6 +258,7 @@ class AptDependenciesInstall(InstallStepAsRoot):
         "python-virtualenv",
         "postgresql",
         "libpq-dev",
+        "libevent-dev",
     ]
 
     @property
