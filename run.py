@@ -211,7 +211,7 @@ class BrewDependenciesInstall(InstallStep):
          "libxml2",
          "libxslt",
          "libmagic",
-         "mysql",
+         "postgresql",
     ]
 
     @property
@@ -255,7 +255,7 @@ class AptDependenciesInstall(InstallStepAsRoot):
         "libxslt1-dev",
         "libmagic1",
         "python-virtualenv",
-        "mysql-server",
+        "postgresql",
     ]
 
     @property
