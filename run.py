@@ -256,6 +256,7 @@ class AptDependenciesInstall(InstallStepAsRoot):
         "libmagic1",
         "python-virtualenv",
         "postgresql",
+        "libpq-dev",
     ]
 
     @property
