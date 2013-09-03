@@ -394,6 +394,8 @@ class SetupDatabase(InstallStep):
     def setup(self):
         os.chdir(self.options.get("project_dir"))
         self.run_virtualenv("python", "manage.py", "syncdb", "--noinput", **self.verbose_kwargs)
+        self.run_virtualenv("python", "manage.py", "migrate", "advocoders", **self.verbose_kwargs)
+        self.run_virtualenv("python", "manage.py", "migrate", "social_auth", **self.verbose_kwargs)
 
 
 class RunServerAlias(InstallStep):
@@ -407,7 +409,7 @@ class RunServerAlias(InstallStep):
             return False
 
     def setup(self):
-        alias = 'alias runserver="cd %s; source ../virtualenv/bin/activate; ./manage.py runserver 8001"' % (
+        alias = 'alias runserver="cd %s; source ../virtualenv/bin/activate; ./manage.py runserver 8000"' % (
             self.options.get("project_dir"))
         prepend_file(bash_config_file(self.options), alias)
 
@@ -430,8 +432,8 @@ class RunServer(InstallStep):
 
     def always_run(self):
         os.chdir(self.options.get("project_dir"))
-        runserver = self.run_virtualenv("python", "manage.py", "runserver", "0:8001", _bg=True, _iter=True, _out=sys.stdout, _err=sys.stderr)
-        server_address = "http://localhost:8001/"
+        runserver = self.run_virtualenv("python", "manage.py", "runserver", "0:8000", _bg=True, _iter=True, _out=sys.stdout, _err=sys.stderr)
+        server_address = "http://localhost:8000/"
         print """
 ===================================================
 
