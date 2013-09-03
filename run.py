@@ -300,6 +300,7 @@ sudo sh -c 'echo "127.0.0.1 %s" >> /etc/hosts'
 
 
 class GitClone(InstallStep):
+    ''' Cloning the project repo '''
 
     @property
     def already_satisfied(self):
