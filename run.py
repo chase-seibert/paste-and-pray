@@ -314,9 +314,9 @@ class VirtualEnv(InstallStep):
     ''' Setting up a virtualenv and installing python dependencies '''
 
     def __init__(self, options):
-        os.chdir(self.options.get("project_dir"))
-        self.activate_this = os.path.join(self.options.get("project_dir"), 'virtualenv/bin/activate_this.py')
-        self.requirements_file = os.path.join(self.options.get("project_dir"), "requirements.txt")
+        os.chdir(options.get("project_dir"))
+        self.activate_this = os.path.join(options.get("project_dir"), 'virtualenv/bin/activate_this.py')
+        self.requirements_file = os.path.join(options.get("project_dir"), "requirements.txt")
         super(VirtualEnv, self).__init__(options)
 
     @staticmethod
