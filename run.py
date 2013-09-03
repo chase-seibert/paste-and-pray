@@ -61,19 +61,6 @@ def get_regular_username():
     return os.environ.get('SUDO_USER')
 
 
-def raw_input_cached_env(name, prompt):
-    ''' the main use case for this script has the user piping in the results from
-    a curl; which over-rides stdin. But we also want to interactively prompt the user
-    for some input, so dynamcially switch back to tty. '''
-    cached_value = os.environ.get(name)
-    if cached_value:
-        return cached_value
-    sys.stdin = open('/dev/tty')
-    value = raw_input(prompt)
-    os.environ[name] = value
-    return value
-
-
 def bash_config_file(options):
     _os = options.get('os')
     bash_profiles = {
